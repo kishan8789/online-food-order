@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const path = require('path'); // 1. Path module yahan import kiya
+const path = require('path');
 const connectDB = require('./config/db.js');
 
 const app = express();
@@ -23,7 +23,8 @@ app.use('/api/restaurants', require('./routes/restaurantRoutes.js'));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // 2. Agar user kisi bhi frontend route (jaise /cart ya /home) par jaye, toh React ka index.html load ho
-app.get('*', (req, res) => {
+// FIXED: Express 5 ke liye '*' ki jagah '/(.*)' use kiya hai
+app.get('/(.*)', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 // -----------------------------------
