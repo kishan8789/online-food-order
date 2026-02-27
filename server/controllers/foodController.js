@@ -1,9 +1,9 @@
-const FoodItem = require('../models/FoodItem');
+const FoodItem = require('../models/Temp');
 
 
 exports.getFoodByRestaurant = async (req, res) => {
   try {
-   
+
     const id = req.params.restaurantId || req.params.id;
     const food = await FoodItem.find({ restaurantId: id });
     res.json(food);
