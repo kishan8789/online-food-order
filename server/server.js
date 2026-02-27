@@ -22,9 +22,9 @@ app.use('/api/restaurants', require('./routes/restaurantRoutes.js'));
 // 1. Vite React build folder (dist) ko static serve karna
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-// 2. Agar user kisi bhi frontend route (jaise /cart ya /home) par jaye, toh React ka index.html load ho
-// FIXED: Express 5 ke liye '*' ki jagah '/(.*)' use kiya hai
-app.get('/(.*)', (req, res) => {
+// 2. Agar user kisi bhi frontend route par jaye, toh React ka index.html load ho
+// FIXED: Express 5 safe method (Bina kisi symbol ke catch-all)
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 // -----------------------------------
