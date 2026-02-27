@@ -1,5 +1,5 @@
 const Restaurant = require('../models/Restaurant');
-const FoodItem = require('../models/Temp');
+const FoodItem = require('../models/FoodItem');
 
 // Get all restaurants
 exports.getRestaurants = async (req, res) => {

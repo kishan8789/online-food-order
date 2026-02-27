@@ -1,4 +1,4 @@
-const FoodItem = require('../models/Temp');
+const FoodItem = require('../models/FoodItem');
 
 
 exports.getFoodByRestaurant = async (req, res) => {
